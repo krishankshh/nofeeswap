@@ -1,0 +1,61 @@
+FULL-STACK WEB3 ENGINEER
+Senior Frontend & Off-Chain Infrastructure
+Technical Assignment
+Overview
+We are hiring a Senior Full-Stack Engineer for our DEX protocol. In this role, you will work closely with our smart contract engineering team and lead front-end development efforts. This assignment evaluates your ability to deploy, integrate with, and build around a DeFi protocol in a local environment.
+What We Are Looking For
+We need an exceptional engineer who combines strong off-chain infrastructure skills with an understanding of EVM internals. Specifically, we are evaluating competency across these areas:
+•       Modern front-end frameworks (React / Next.js) with Web3 wallet integration
+•       Smart contract deployment, ABI interaction, and transaction lifecycle management
+•       EVM mechanics: gas pricing, nonce ordering, mempool dynamics, and calldata encoding
+•       Automated bot systems that interact with on-chain protocols programmatically
+•       Clear documentation and reproducible engineering workflows
+Important Notes Before You Begin
+Objective
+Deploy a local instance of the NoFeeSwap protocol, build a front-end application to interact with it, and develop an arbitrage bot that monitors the mempool to execute simulated sandwich attacks, all within a local test environment.
+Task 1: Protocol Deployment (Local Environment)
+Set up a complete local development environment with the NoFeeSwap contracts deployed and ready for interaction.
+Requirements
+1.     Local Blockchain: Launch a local blockchain simulator. Foundry’s Anvil is preferred, but Hardhat is acceptable.
+2.     Core Contracts: Clone, compile, and deploy the NoFeeSwap core contracts (github.com/NoFeeSwap/core). For an example of how the protocol should be deployed, please refer to Initialize_test.py#L67-L78.
+3.     Operator Contracts: Clone, compile, and deploy the NoFeeSwap operator contracts (github.com/NoFeeSwap/operator). To understand how the operator contract can be used to interact with NoFeeSwap core, refer to SwapData_test.py.
+4.     Mock Tokens: Deploy and mint at least two ERC-20 tokens to a test wallet for use throughout the remaining tasks.
+Task 2: Decentralized Application (dApp) Front-End
+Build a functional Web3 front-end using React or Next.js that connects to your local node and provides the interfaces described below.
+2a. Wallet Integration
+•       Connect to the local network via MetaMask (or a compatible injected wallet provider).
+•       All on-chain transactions must prompt MetaMask for user authorization.
+•       Gracefully handle transaction states: pending, confirmed, and reverted. Display appropriate feedback to the user at each stage.
+2b. Initialize Liquidity Pool
+•       Provide an interface where a user can initialize a new pool by entering the required parameters (token pair, fee tier, initial price, etc.). Please see INofeeswapDelegatee.sol#L11 for specifics on how a pool should be initialized.
+•       Include a partially graphical interface where the user can visually select and manipulate the graphical kernel—the visual representation of the liquidity distribution shape across price intervals. Alternative: If you choose to omit the graphical interface for the kernel, feel free to use the mock implementation found at SwapData_test.py#L841-L846. You are also welcome to use the curve sequence from that same file.
+2c. Manage Liquidity
+•       Build an intuitive, graphical interface for adding (Mint) and removing (Burn) liquidity from initialized pools.
+•       Show the user’s current position and allow partial or full withdrawal.
+2d. Swap Interface
+•       Build a standard token swap UI that allows users to trade between the mock tokens.
+•       Include a slippage tolerance control (e.g., a numeric input or slider) so the user can define the maximum acceptable price impact before the transaction reverts.
+•       Display estimated output amount & price impact before the user confirms the swap.
+Task 3: Mempool Monitoring & Sandwich Attack Bot
+Write a backend script/bot (e.g., in TypeScript) that executes an off-chain sandwich attack simulation against your local network.
+3a. Mempool Monitoring
+•       The bot must run in parallel to the UI and continuously monitor the local node’s mempool for pending swap transactions originating from the front-end.
+3b. Target Detection & Calldata Decoding
+•       When a user initiates a swap from the front-end, the bot must detect the pending transaction in the mempool.
+•       Decode transaction calldata to extract victim’s exact slippage tolerance & trade size.
+3c. Sandwich Execution
+If the decoded parameters indicate profitability, the bot should dynamically construct and broadcast a sandwich attack consisting of three ordered transactions:
+1.     Front-run: A buy transaction submitted with a higher gas/priority fee to be mined before the victim’s swap.
+2.     Victim Swap: The original user’s transaction executes at a worse price.
+3.     Back-run: A sell transaction submitted with a lower gas/priority fee to be mined immediately after the victim’s swap.
+Deliverables
+1.     Repository: A GitHub or GitLab repository link containing all source code, deployment scripts, and the README.
+2.     Video Walkthrough: A recorded screen-share demonstrating the full workflow: deploying contracts, using the dApp (pool creation, liquidity management, swaps), and the bot detecting and executing a sandwich attack in real time.
+3. Transparency Statement: However, in your submission, you must be fully transparent about which parts are complete, partially complete, or omitted. Please include this explicitly in your repository (e.g., within your README).
+Documentation & Reproducibility: Provide a comprehensive README.md that allows our team to reproduce your entire setup from scratch.
+1.     Prerequisites: List all required software, versions, and environment variables.
+2.     Step-by-Step Setup: Instructions to spin up the local node, deploy contracts, start UI, and launch bot. Each step should be a copy-pasteable command where possible.
+3.     Architectural Overview: A brief explanation of your bot’s design, including its mempool decoding logic and sandwich profitability math.
+4.     Known Limitations: Document any incomplete features, known bugs, or areas you would improve with more time.
+Reference
+•       NoFeeSwap YellowPaper: github.com/NoFeeSwap/docs/blob/main/yellowpaper.pdf
