@@ -1,0 +1,284 @@
+.liquidity-grid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .liquidity-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.liquidity-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Position Card */
+.position-card {
+  padding: 20px;
+}
+.position-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.position-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.position-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.position-stat-label {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.position-stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Action Card */
+.action-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.tab-bar {
+  display: flex;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 14px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-hover);
+}
+.tab-btn.active {
+  color: var(--text-primary);
+}
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.action-content {
+  padding: 20px;
+}
+
+/* Mint Inputs */
+.mint-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.mint-input-card {
+  padding: 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.mint-input-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.mint-balance {
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-weight: 400;
+}
+.mint-balance:hover {
+  color: var(--text-primary);
+}
+
+.mint-plus {
+  text-align: center;
+  color: var(--text-tertiary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: -4px 0;
+}
+
+/* Burn Section */
+.burn-section {
+  margin-bottom: 16px;
+}
+
+.burn-amount-display {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.burn-amount-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.burn-slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--bg-input);
+  border-radius: 3px;
+  outline: none;
+  margin-bottom: 12px;
+}
+.burn-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.burn-presets {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.burn-preset-btn {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.burn-preset-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+.burn-preset-btn.active {
+  background: var(--color-primary-dim);
+  border-color: var(--color-primary);
+  color: var(--color-primary-hover);
+}
+
+.burn-preview {
+  padding: 12px;
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.burn-preview-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.85rem;
+}
+.burn-preview-row span:first-child {
+  color: var(--text-tertiary);
+}
+.burn-preview-row span:last-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Chart Panel */
+.liquidity-chart-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chart-card {
+  padding: 20px;
+}
+
+.chart-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.chart-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  margin-bottom: 16px;
+}
+
+.chart-wrapper {
+  margin: 0 -8px;
+}
+
+.pool-info-rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.pool-info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+}
+.pool-info-row:last-child {
+  border-bottom: none;
+}
+.pool-info-row span:first-child {
+  color: var(--text-tertiary);
+}
+.pool-info-row span:last-child {
+  color: var(--text-primary);
+  font-weight: 500;
+}

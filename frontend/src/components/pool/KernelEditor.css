@@ -1,0 +1,62 @@
+.kernel-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kernel-presets {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.kernel-preset-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.kernel-preset-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+.kernel-preset-btn.active {
+  background: var(--color-primary-dim);
+  border-color: var(--color-primary);
+  color: var(--color-primary-hover);
+}
+
+.preset-mini {
+  opacity: 0.7;
+}
+.kernel-preset-btn.active .preset-mini {
+  opacity: 1;
+}
+
+.kernel-canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.kernel-canvas {
+  user-select: none;
+}
+
+.kernel-hint {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  text-align: center;
+}

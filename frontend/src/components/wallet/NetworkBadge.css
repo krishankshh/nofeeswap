@@ -1,0 +1,43 @@
+.network-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-family);
+}
+
+.network-badge--connected {
+  background: var(--color-accent-dim);
+  color: var(--color-accent);
+  border-color: rgba(6, 214, 160, 0.2);
+}
+
+.network-badge--wrong {
+  background: var(--color-error-dim);
+  color: var(--color-error);
+  border-color: rgba(239, 68, 68, 0.2);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.network-badge--wrong:hover {
+  background: rgba(239, 68, 68, 0.25);
+}
+
+.network-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.network-dot--success {
+  background: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accent);
+  animation: pulse 2s infinite;
+}
+.network-dot--error {
+  background: var(--color-error);
+  box-shadow: 0 0 6px var(--color-error);
+}
